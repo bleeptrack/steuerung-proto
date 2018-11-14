@@ -47,10 +47,9 @@ class Steuerung(object):
     # --> Master callback function, triggered everytime an intent is recognized
     def master_intent_callback(self,hermes, intent_message):
         coming_intent = intent_message.intent.intent_name
-        if coming_intent == 'intent_1':
-            self.intent_1_callback(hermes, intent_message)
-        if coming_intent == 'intent_2':
-            self.intent_2_callback(hermes, intent_message)
+        if coming_intent == 'oeffnen':
+            self.oeffnen_callback(hermes, intent_message)
+
 
         # more callback and if condition goes here...
 
