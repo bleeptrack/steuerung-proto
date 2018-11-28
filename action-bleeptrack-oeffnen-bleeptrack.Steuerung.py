@@ -7,6 +7,7 @@ from hermes_python.ontology import *
 import io
 import RPi.GPIO as GPIO
 from pixels import pixels
+import time
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
@@ -49,11 +50,14 @@ def action_wrapper(hermes, intentMessage, conf):
     result_sentence = 'Oeffnen'
     GPIO.output(12, GPIO.HIGH)
     #GPIO.output(47, GPIO.HIGH)
-    pixels.speak()
-    GPIO.output(13, GPIO.LOW)
-    hermes.publish_end_session(intentMessage.session_id, result_sentence)
     
-
+    GPIO.output(13, GPIO.LOW)
+    
+    pixels.speak()
+    time.sleep(3)
+    pixels.off()
+    
+    hermes.publish_end_session(intentMessage.session_id, result_sentence)
 
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:

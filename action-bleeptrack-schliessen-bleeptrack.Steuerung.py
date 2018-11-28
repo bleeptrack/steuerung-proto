@@ -6,13 +6,17 @@ from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
 import RPi.GPIO as GPIO
+from pixels import pixels
+import time
 
 CONFIGURATION_ENCODING_FORMAT = "utf-8"
 CONFIG_INI = "config.ini"
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(12, GPIO.OUT)
 GPIO.setup(13, GPIO.OUT)
-GPIO.setup(47, GPIO.OUT)
+#GPIO.setup(47, GPIO.OUT)
+pixels.wakeup()
+pixels.off()
 
 class SnipsConfigParser(ConfigParser.SafeConfigParser):
     def to_dict(self):
@@ -46,8 +50,13 @@ def action_wrapper(hermes, intentMessage, conf):
     
     result_sentence = 'Schliessen'
     GPIO.output(12, GPIO.LOW)
-    GPIO.output(47, GPIO.LOW)
+    #GPIO.output(47, GPIO.LOW)
     GPIO.output(13, GPIO.HIGH)
+    
+    pixels.speak()
+    time.sleep(3)
+    pixels.off()
+    
     hermes.publish_end_session(intentMessage.session_id, result_sentence)
     
 

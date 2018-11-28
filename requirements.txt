@@ -2,3 +2,4 @@
 hermes-python>=0.1
 RPi.GPIO
 spidev
+time
