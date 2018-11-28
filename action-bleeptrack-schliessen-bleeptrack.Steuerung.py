@@ -12,6 +12,7 @@ CONFIG_INI = "config.ini"
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(12, GPIO.OUT)
 GPIO.setup(13, GPIO.OUT)
+GPIO.setup(47, GPIO.OUT)
 
 class SnipsConfigParser(ConfigParser.SafeConfigParser):
     def to_dict(self):
@@ -45,6 +46,7 @@ def action_wrapper(hermes, intentMessage, conf):
     
     result_sentence = 'Schliessen'
     GPIO.output(12, GPIO.LOW)
+    GPIO.output(47, GPIO.LOW)
     GPIO.output(13, GPIO.HIGH)
     hermes.publish_end_session(intentMessage.session_id, result_sentence)
     
