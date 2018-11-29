@@ -48,7 +48,7 @@ def action_wrapper(hermes, intentMessage, conf):
     Refer to the documentation for further details. 
     """ 
     
-    result_sentence = 'Schliessen'
+    result_sentence = ''
     GPIO.output(12, GPIO.LOW)
     #GPIO.output(47, GPIO.LOW)
     GPIO.output(13, GPIO.HIGH)

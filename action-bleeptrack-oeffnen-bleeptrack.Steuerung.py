@@ -47,7 +47,7 @@ def action_wrapper(hermes, intentMessage, conf):
      
     Refer to the documentation for further details. 
     """ 
-    result_sentence = 'Oeffnen'
+    result_sentence = ''
     GPIO.output(12, GPIO.HIGH)
     #GPIO.output(47, GPIO.HIGH)
     
